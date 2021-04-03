@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Anton&display=swap');
+:root{
+    /* fonts family  */
+    --aldrich_font :'Aldrich', sans-serif;
+    --anton_font: 'Anton', sans-serif;
+   /* background color  */
+    --anim_back_1: rgba(1,1,1,0.8);
+    --anim_back_2: rgba(1,1,1,0.6);
+    --time_back_1: rgba(118,39,247,0.8);
+    --time_back_2: rgba(118,39,247,0.7);
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    min-height: 100vh;
+    background: var(--time_back_1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+article{
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+}
+article .col{
+    flex: 50%;
+    height: 350px;
+}
+article .animation{
+    background: linear-gradient(var(--anim_back_1),var(--anim_back_2)), url('../img/img0.jpg');
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+article .animation .box{
+    width: 100%;
+    height: 100%;
+    top: 0px ;
+    left: 0px;
+    position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+article .animation .box{
+    font-family: var(--anton_font);
+    font-size: 3vw;
+    -webkit-text-stroke:0.1px #fff;
+    padding: 0px;
+    color:var(--time_back_1);
+}
+article .animation span{
+    position: absolute;
+    pointer-events: none;
+    animation: anim 4s infinite linear;
+}
+@keyframes anim{
+    20%{
+        transform:translate(-20px,0px);
+    }
+    40%{
+        transform:translate(50px,60px);
+    }
+    60%{
+        transform:translate(-20px,40px);
+        opacity: 0.8;
+    }
+    80%{
+        transform:translate(30px,20px);
+        opacity: 0.6;
+    }
+    95%{
+        transform:translate(60,20px);
+        opacity: 0.2;
+    }
+}
+
+
+article .time{
+   padding: 70px 10px;
+   background: linear-gradient(var(--time_back_1),var(--time_back_2)),url('../img/img1.jpg');
+   background-size: cover;
+   display: flex;
+   justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+
+}
+article .time span{
+    width: 60px;
+    font-family: var(--anton_font);
+    margin: 0px 5px;
+    background: red;
+    color: white;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 0.8em;
+}
+article .time span div{
+    font-size: 40px;
+    text-align: center;
+    background: rgba(1,1,1,0.9);
+}
+
+
+
+/* media query */
+
+@media (max-width:990px){
+    article{
+        margin:50px 0px ;
+    }
+    article section:first-child{
+        flex:100%
+    }
+}

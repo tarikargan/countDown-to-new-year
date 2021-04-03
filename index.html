@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <article>
+        <section class="animation col">
+            <div class="box">
+                <h1>
+                    CountDown To New Year
+                </h1>
+            </div>
+        </section>
+        <section class="time col">
+            <span>
+                <div class="months">01</div>
+                Months
+            </span>
+            <span>
+                <div class="days">01</div>
+                Days
+            </span>
+            <span>
+                <div class="hours">01</div>
+                Hours
+            </span>
+            <span>
+                <div class="minutes">01</div>
+                Minutes
+            </span>
+            <span>
+                <div class="seconds">01</div>
+                Seconds
+            </span>
+        </section>
+    </article>
+    <script>
+        // create animation 
+        var img = slc('.animation');
+        function createEl() {
+            var el = document.createElement('span');
+            var size = Math.random() * 20;
+            el.style.width = 20 + size + "px";
+            el.style.height = 20 + size + "px";
+            el.style.top = Math.random() * innerWidth + "px";
+            el.style.left = Math.random() * innerHeight + "px";
+            el.style.background = 'radial-gradient(transparent,rgba(230,230,230,0.2),rgba(230,230,230,0.6))';
+            el.style.borderRadius = "50%";
+            img.appendChild(el);
+            setTimeout(() => {
+                el.remove();
+            }, 5000);
+        }
+        setInterval(createEl, 150);
+
+
+        
+        var year = new Date().getFullYear();
+        var newYr = year + 1;
+        var even = new Date(`jan 1, ${newYr} 00:00:00`);
+        
+        var x = setInterval(() => {
+            var newDate = new Date();
+            var renTime = even.getTime() - newDate.getTime();
+            var months = Math.floor(renTime / (1000 * 60 * 60 * 24 * 30));
+            var days = Math.floor(renTime % (1000 * 60 * 60 * 24 * 30) / (1000 * 60 * 60 * 24));
+            var hours = Math.floor(renTime % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+            var minutes = Math.floor(renTime % (1000 * 60 * 60) / (1000 * 60));
+            var seconds = Math.floor(renTime % (1000 * 60) / (1000));
+
+
+            slc('.months').innerHTML = getTrueNumber(months);
+            slc('.days').innerHTML = getTrueNumber(days);
+            slc('.hours').innerHTML = getTrueNumber(hours);
+            slc('.minutes').innerHTML = getTrueNumber(minutes);
+            slc('.seconds').innerHTML = getTrueNumber(seconds);
+
+        }, 1000);
+        function slc(el) {
+            return document.querySelector(el);
+        }
+
+        function getTrueNumber(n) {
+            if (n < 10) {
+                return "0" + n;
+            } else {
+                return n;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
